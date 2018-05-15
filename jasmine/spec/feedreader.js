@@ -96,17 +96,17 @@ $(function() {
     /* This test ensures that when a new feed is loaded
      * by the loadFeed function that the content actually changes.
      */
-    let feedTitle,
-        newFeedTitle;
+    let feeds,
+        newFeeds;
 
     /* Call loadFeed. When finished save the feed title and make a second call
      * to loadfeed and save the new feed title.
      */
     beforeEach(function(done) {
       loadFeed(0, function() {
-        feedTitle = $('.header-title').html();
+        feeds = $('.feed').html();
         loadFeed(1, function() {
-          newFeedTitle = $('.header-title').html();
+          newFeeds = $('.feed').html();
           done();
         });
       });
@@ -114,7 +114,7 @@ $(function() {
 
     /* Ensures the feed titles are not equal, so the content changed */
     it('changes content', function() {
-      expect(newFeedTitle).not.toBe(feedTitle);
+      expect(newFeeds).not.toBe(feeds);
     });
   });
 }());
